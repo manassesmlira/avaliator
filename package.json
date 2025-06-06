@@ -2,5 +2,8 @@
   "dependencies": {
     "fs": "^0.0.1-security",
     "googleapis": "^150.0.1"
+  },
+  "scripts": {
+    "processar:formulario": "node src/index.js"
   }
 }

@@ -1,0 +1,70 @@
+# .github/workflows/processar-notas.yml
+name: Processamento Automático de Notas
+
+on:
+  # Acionamento via webhook do Google Forms
+  repository_dispatch:
+    types: [nova-resposta-formulario]
+  
+  # Permite execução manual
+  workflow_dispatch:
+    inputs:
+      formId:
+        description: 'ID do Formulário'
+        required: true
+
+jobs:
+  processar-avaliacao:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout do repositório
+      uses: actions/checkout@v3
+    
+    - name: Configurar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+    
+    # Configurar credenciais a partir de secrets do GitHub
+    - name: Configurar ambiente
+      env:
+        NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+        WHASCALE_API_URL: ${{ secrets.WHASCALE_API_URL }}
+        WASCRIPT_TOKEN: ${{ secrets.WASCRIPT_TOKEN }}
+        GOOGLE_FORMS_CREDENTIALS: ${{ secrets.GOOGLE_FORMS_CREDENTIALS }}
+        GITHUB_ACTIONS_TOKEN: ${{ secrets.GITHUB_ACTIONS_TOKEN }}
+      run: |
+        echo "NOTION_TOKEN=$NOTION_TOKEN" >> .env
+        echo "NOTION_DATABASE_ID=$NOTION_DATABASE_ID" >> .env
+        echo "WHASCALE_API_URL=$WHASCALE_API_URL" >> .env
+        echo "WASCRIPT_TOKEN=$WASCRIPT_TOKEN" >> .env
+        echo "GOOGLE_FORMS_CREDENTIALS=$GOOGLE_FORMS_CREDENTIALS" >> .env
+        echo "GITHUB_ACTIONS_TOKEN=$GITHUB_ACTIONS_TOKEN" >> .env
+        echo "NODE_ENV=production" >> .env
+    
+    - name: Instalar dependências
+      run: npm install
+    
+    - name: Processar Formulário
+      env:
+        FORM_ID: ${{ github.event.client_payload.formId || github.event.inputs.formId }}
+      run: npm run processar:formulario $FORM_ID
+    
+    - name: Registrar log de execução
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: logs-processamento
+        path: logs/
+
+# Configurações de segurança
+permissions:
+  contents: read
+  actions: write
+
+# Prevenir execuções simultâneas
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
