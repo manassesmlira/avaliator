@@ -142,6 +142,7 @@ NODE_ENV=
 npm install googleapis fs
 npm install @notionhq/client
 npm install axios
+npm install dotenv
 git clone [repositorio]
 
 npm install
