@@ -11,12 +11,14 @@ Corrigir provas automaticamente
 Registrar notas no Notion
 Gerar histórico escolar
 Notificar alunos sobre resultados
+
 🛠️ Tecnologias
 Node.js
 GitHub Actions
 Notion API
 Google Forms API
 Whatsapp API
+
 📊 Arquitetura
 projeto/
 
@@ -74,31 +76,33 @@ Envia notificação ao aluno
 NOTIONAPIKEY
 GOOGLEFORMSCREDENTIALS
 WHATSAPP_TOKEN
-📦 Instalação
-bash
-Copiar
+
+📦 Instalação Dependências
+- npm install googleapis fs
+- npm install @notionhq/client
+- npm install axios
+
 
 git clone [repositorio]
-npm install
+- npm install
+
 🚀 Execução
-bash
-Copiar
-
 npm start
-🧪 Testes
-bash
-Copiar
 
+🧪 Testes
 npm test
+
 🤝 Contribuição
 Faça fork do projeto
 Crie branch feature
 Commit suas alterações
 Abra Pull Request
+
 📌 Próximas Etapas
 Implementar correção automática
 Integrar APIs
 Configurar notificações
+
 👥 Desenvolvedor
 Manasses - Desenvolvedor BackEnd
 
