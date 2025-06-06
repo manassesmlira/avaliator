@@ -3,7 +3,6 @@
 🚀 Projeto: Sistema de Avaliação Automatizado
 
 📝 Descrição
-
 Sistema para processamento automático de avaliações, integração com Google Forms, Notion e notificações.
 
 🎯 Objetivos
@@ -19,7 +18,6 @@ Notion API
 Google Forms API
 Whatsapp API
 📊 Arquitetura
-
 projeto/
 
 │
@@ -59,7 +57,6 @@ projeto/
 └── README.md
 
 🔧 Fluxo Operacional
-
 Aluno realiza prova no Google Forms
 
 Sistema captura respostas
@@ -71,7 +68,6 @@ Calcula nota automaticamente
 Salva nota no Notion
 
 Atualiza histórico escolar
-
 Envia notificação ao aluno
 
 🔒 Variáveis de Ambiente
@@ -79,21 +75,21 @@ NOTIONAPIKEY
 GOOGLEFORMSCREDENTIALS
 WHATSAPP_TOKEN
 📦 Instalação
-Bash
+bash
 Copiar
+
 git clone [repositorio]
 npm install
-
 🚀 Execução
-Bash
+bash
 Copiar
+
 npm start
-
 🧪 Testes
-Bash
+bash
 Copiar
-npm test
 
+npm test
 🤝 Contribuição
 Faça fork do projeto
 Crie branch feature
@@ -104,11 +100,9 @@ Implementar correção automática
 Integrar APIs
 Configurar notificações
 👥 Desenvolvedor
-
 Manasses - Desenvolvedor Fullstack
 
 📄 Licença
-
 MIT License
 
 Aguardando próximo passo para detalhar a implementação! 🚀
