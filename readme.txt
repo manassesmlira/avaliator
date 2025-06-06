@@ -100,7 +100,7 @@ Implementar correção automática
 Integrar APIs
 Configurar notificações
 👥 Desenvolvedor
-Manasses - Desenvolvedor Fullstack
+Manasses - Desenvolvedor BackEnd
 
 📄 Licença
 MIT License
